@@ -1,5 +1,10 @@
 export const Navbar = () => {
   return (
-    <div className="w-full h-20 md:h-16 bg-neutral-700 backdrop-blur-xl z-50"></div>
+    <div className="w-full h-20 md:h-16 bg-neutral-900 backdrop-blur-xl z-50">
+      <div className="h-20 md:h-16 flex justify-between items-center px-12">
+        <p className="font-semibold mx-8">Home</p>
+        <p className="font-semibold mx-8">Iggo</p>
+      </div>
+    </div>
   )
 }
