@@ -1,6 +1,7 @@
 import Image from "next/image";
 import styles from "./homepage.module.css";
 import { Navbar } from "./components/navbar/Navbar";
+import { Drawingboard } from "./components/drawingboard/Drawingboard";
 
 export default function Home() {
   return (
@@ -11,7 +12,7 @@ export default function Home() {
           <p className="text-3xl font-bold">Perlin Noise Generator</p>
         </div>
         <div className="w-full h-svh text-center flex flex-col items-center justify-center bg-black px-12">
-
+          <Drawingboard />
         </div>
       </div>
     </div> 
