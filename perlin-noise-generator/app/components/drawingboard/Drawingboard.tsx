@@ -19,7 +19,7 @@ export const Drawingboard = () => {
         };
 
         p.draw = () => {
-          p.background(20);
+          p.background(0);
 
           const rotationX = p.map(p.mouseY, 0, p.height, -p.PI, p.PI);
           const rotationY = p.map(p.mouseX, 0, p.width, -p.PI, p.PI);
