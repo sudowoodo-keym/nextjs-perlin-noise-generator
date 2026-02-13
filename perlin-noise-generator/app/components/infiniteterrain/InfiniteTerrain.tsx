@@ -30,11 +30,13 @@ export const InfiniteTerrain = () => {
           p.translate(-p.width / 2, -p.height / 2);
 
           for (let x = 0; x < cols; x++) {
+            p.beginShape();
             for (let y = 0; y < rows; y++) {
               p.stroke(255);
               p.noFill();
               p.rect(x*scl,y*scl,scl,scl)
             }
+            p.endShape();
           }
 
         }
