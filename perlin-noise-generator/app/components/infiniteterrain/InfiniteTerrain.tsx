@@ -21,15 +21,37 @@ export const InfiniteTerrain = () => {
       const p5 = (await import ("p5")).default;
 
       const sketch = (p: any) => {
-        p.setup = () => {
 
-          p.createCanvas(p.windowWidth, p.windowHeight, p.WEBGL); 
-          cols = Math.floor((p.windowWidth * 2) / scl);
-          rows = Math.floor((p.windowHeight * 1.5) / scl);
+        function calculateGrid() {
+          const vw = window.innerWidth;
+          const vh = window.innerHeight;
+
+          cols = Math.floor((vw * 2) / scl);
+          rows = Math.floor((vh * 1.5) / scl);
 
           landscape = Array.from({ length: cols }, () =>
             Array.from({ length: rows }, () => 0)
-          );  
+          );
+        }
+
+        p.setup = () => {
+          p.createCanvas(
+            window.innerWidth,
+            window.innerHeight,
+            p.WEBGL
+          );
+
+          calculateGrid();
+        };
+
+        p.windowResized = () => {
+          p.resizeCanvas(
+            window.innerWidth,
+            window.innerHeight
+          );
+
+          calculateGrid();
+
         };
        
         p.draw = () => {
@@ -50,7 +72,13 @@ export const InfiniteTerrain = () => {
           };
 
           p.rotateX( Math.PI / 3 );
-          p.translate(-p.height / .6 + 50 , -p.width / 2 );
+          const terrainWidth = cols * scl;
+          const terrainHeight = rows * scl;
+
+          p.translate(
+            -terrainWidth / 2,
+            -terrainHeight / 2
+          );
 
           for (let y = 0; y < rows-1; y++) {
             p.beginShape(p.TRIANGLE_STRIP);
@@ -87,7 +115,15 @@ export const InfiniteTerrain = () => {
   }, []);
 
   return (
-    <div ref={sketchRef}/>
+    <div ref={sketchRef}
+      style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          width: "100vw",
+          height: "100vh"
+        }}
+    />
   )
 }
 
